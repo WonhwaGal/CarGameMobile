@@ -10,9 +10,11 @@ namespace Services.Analytics.UnityAnalytics
             UnityEngine.Analytics.Analytics.CustomEvent(eventName);
             Debug.Log($"Sending and event {eventName}");
         }
-            
 
         public void SendEvent(string eventName, Dictionary<string, object> eventData) =>
             UnityEngine.Analytics.Analytics.CustomEvent(eventName, eventData);
+
+        public void SendTransaction(string id, decimal count, string currency) =>
+            UnityEngine.Analytics.Analytics.Transaction(id, count, currency);
     }
 }

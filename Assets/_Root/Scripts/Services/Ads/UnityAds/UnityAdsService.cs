@@ -8,7 +8,6 @@ namespace Services.Ads.UnityAds
     {
         [Header("Components")]
         [SerializeField] private UnityAdsSettings _settings;
-        public static UnityAdsService Instance { get; private set; }
 
         [field: Header("Events")]
         [field: SerializeField] public UnityEvent Initialized { get; private set; }
@@ -21,9 +20,6 @@ namespace Services.Ads.UnityAds
 
         private void Awake()
         {
-            if (Instance == null) Instance = this;
-            else Destroy(this.gameObject);
-
             InitializeAds();
             InitializePlayers();
         }

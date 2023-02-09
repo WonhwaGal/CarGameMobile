@@ -466,6 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1594739942}
   - component: {fileID: 1594739943}
+  - component: {fileID: 1594739944}
   m_Layer: 0
   m_Name: Services
   m_TagString: Untagged
@@ -503,6 +504,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef548f459b5785a419a3668107c1b5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1594739944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594739941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f122491bdc9d405439f61a929af34236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adsService: {fileID: 803930615}
+  _iapService: {fileID: 1267355802}
+  _analyticsManager: {fileID: 778736670}
 --- !u!1 &1980575205
 GameObject:
   m_ObjectHideFlags: 0

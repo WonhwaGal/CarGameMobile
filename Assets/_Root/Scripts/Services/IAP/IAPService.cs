@@ -6,7 +6,6 @@ namespace Services.IAP
 {
     internal class IAPService : MonoBehaviour, IStoreListener, IIAPService
     {
-        public static IAPService Instance { get; private set; }
         [Header("Components")]
         [SerializeField] private ProductLibrary _productLibrary;
 
@@ -24,9 +23,6 @@ namespace Services.IAP
 
         private void Awake()
         {
-            if (Instance == null) Instance = this;
-            else Destroy(this.gameObject);
-
             InitializeProducts();
         }
 
@@ -64,9 +60,8 @@ namespace Services.IAP
 
         PurchaseProcessingResult IStoreListener.ProcessPurchase(PurchaseEventArgs args)
         {
-            Debug.Log("ProcessPurchase method");
             if (_purchaseValidator.Validate(args))
-                PurchaseSucceed?.Invoke();
+                OnPurchaseSucceed(args.purchasedProduct);
             else
                 OnPurchaseFailed(args.purchasedProduct.definition.id, "NonValid");
 
@@ -82,6 +77,16 @@ namespace Services.IAP
             PurchaseFailed?.Invoke();
         }
 
+        private void OnPurchaseSucceed(UnityEngine.Purchasing.Product product)
+        {
+            string productId = product.definition.id;
+            decimal amount = (decimal)(product.definition.payout?.quantity ?? 1); // payout будет null в редакторе
+            string currency = product.metadata.isoCurrencyCode;
+            ServicesRoster.AnalyticsManager.SendTransaction(productId, amount, currency);
+
+            Log($"Purchased: {productId}");
+            PurchaseSucceed?.Invoke();
+        }
 
         public void Buy(string id)
         {

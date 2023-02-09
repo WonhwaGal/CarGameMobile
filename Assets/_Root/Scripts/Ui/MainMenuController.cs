@@ -1,8 +1,6 @@
 using Profile;
 using Tool;
 using UnityEngine;
-using Services.Ads.UnityAds;
-using Services.IAP;
 using Object = UnityEngine.Object;
 
 namespace Ui
@@ -18,10 +16,17 @@ namespace Ui
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
             _view.Init(StartGame, GoToSettings, WatchRewardedAd, BuyItem);
-            UnityAdsService.Instance.RewardedPlayer.Finished += ReceiveCrystals;
-            IAPService.Instance.PurchaseSucceed.AddListener(ItemPurchased);
+
+            SubscribeAds();
+            SubscribeIAP();
         }
 
+
+        protected override void OnDispose()
+        {
+            UnsubscribeAds();
+            UnsubscribeIAP();
+        }
 
         private MainMenuView LoadView(Transform placeForUi)
         {
@@ -36,15 +41,37 @@ namespace Ui
             _profilePlayer.CurrentState.Value = GameState.Game;
         private void GoToSettings() =>
             _profilePlayer.CurrentState.Value = GameState.Settings;
-        private void WatchRewardedAd() => UnityAdsService.Instance.RewardedPlayer.Play();
-        private void ReceiveCrystals() => Debug.LogWarning("5 crystals received");
-        private void BuyItem(string id) => IAPService.Instance.Buy(id);
-        private void ItemPurchased() => Debug.LogWarning("Purchase successfully made");
+        private void WatchRewardedAd() => ServicesRoster.AdsService.RewardedPlayer.Play();
+        private void BuyItem(string id) => ServicesRoster.IAPService.Buy(id);
 
-        protected override void OnDispose()
+
+        private void SubscribeAds()
         {
-            UnityAdsService.Instance.RewardedPlayer.Finished -= ReceiveCrystals;
-            IAPService.Instance.PurchaseSucceed.RemoveListener(ItemPurchased);
+            ServicesRoster.AdsService.RewardedPlayer.Finished += OnAdsFinished;
+            ServicesRoster.AdsService.RewardedPlayer.Skipped += OnAdsCancelled;
+            ServicesRoster.AdsService.RewardedPlayer.Failed += OnAdsCancelled;
         }
+        private void UnsubscribeAds()
+        {
+            ServicesRoster.AdsService.RewardedPlayer.Finished -= OnAdsFinished;
+            ServicesRoster.AdsService.RewardedPlayer.Skipped -= OnAdsCancelled;
+            ServicesRoster.AdsService.RewardedPlayer.Failed -= OnAdsCancelled;
+        }
+
+        private void SubscribeIAP()
+        {
+            ServicesRoster.IAPService.PurchaseSucceed.AddListener(OnIAPSucceed);
+            ServicesRoster.IAPService.PurchaseFailed.AddListener(OnIAPFailed);
+        }
+        private void UnsubscribeIAP()
+        {
+            ServicesRoster.IAPService.PurchaseSucceed.RemoveListener(OnIAPSucceed);
+            ServicesRoster.IAPService.PurchaseFailed.RemoveListener(OnIAPFailed);
+        }
+
+        private void OnAdsFinished() => Debug.Log("Ads reward is granted");
+        private void OnAdsCancelled() => Debug.LogWarning("Process was interrupted. Reward is not granted.");
+        private void OnIAPSucceed() => Debug.Log("Purchase succeed");
+        private void OnIAPFailed() => Debug.LogWarning("Purchase failed");
     }
 }
