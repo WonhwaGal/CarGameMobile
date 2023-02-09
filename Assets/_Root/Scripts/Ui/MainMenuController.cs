@@ -1,6 +1,8 @@
 using Profile;
 using Tool;
 using UnityEngine;
+using Services.Ads.UnityAds;
+using Services.IAP;
 using Object = UnityEngine.Object;
 
 namespace Ui
@@ -11,12 +13,13 @@ namespace Ui
         private readonly ProfilePlayer _profilePlayer;
         private readonly MainMenuView _view;
 
-
         public MainMenuController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, GoToSettings);
+            _view.Init(StartGame, GoToSettings, WatchRewardedAd, BuyItem);
+            UnityAdsService.Instance.RewardedPlayer.Finished += ReceiveCrystals;
+            IAPService.Instance.PurchaseSucceed.AddListener(ItemPurchased);
         }
 
 
@@ -33,5 +36,15 @@ namespace Ui
             _profilePlayer.CurrentState.Value = GameState.Game;
         private void GoToSettings() =>
             _profilePlayer.CurrentState.Value = GameState.Settings;
+        private void WatchRewardedAd() => UnityAdsService.Instance.RewardedPlayer.Play();
+        private void ReceiveCrystals() => Debug.LogWarning("5 crystals received");
+        private void BuyItem(string id) => IAPService.Instance.Buy(id);
+        private void ItemPurchased() => Debug.LogWarning("Purchase successfully made");
+
+        protected override void OnDispose()
+        {
+            UnityAdsService.Instance.RewardedPlayer.Finished -= ReceiveCrystals;
+            IAPService.Instance.PurchaseSucceed.RemoveListener(ItemPurchased);
+        }
     }
 }

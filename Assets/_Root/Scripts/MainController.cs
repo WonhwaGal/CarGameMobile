@@ -2,11 +2,15 @@ using Ui;
 using Game;
 using Profile;
 using UnityEngine;
+using Services.Analytics;
+using Services.Ads.UnityAds;
 
 internal class MainController : BaseController
 {
     private readonly Transform _placeForUi;
     private readonly ProfilePlayer _profilePlayer;
+    //private readonly AnalyticsManager _analyticsManager;
+    //private readonly UnityAdsService _adsService;
 
     private MainMenuController _mainMenuController;
     private GameController _gameController;
@@ -17,6 +21,8 @@ internal class MainController : BaseController
     {
         _placeForUi = placeForUi;
         _profilePlayer = profilePlayer;
+        //_analyticsManager = analyticsManager;
+        //_adsService = asdService;
 
         profilePlayer.CurrentState.SubscribeOnChange(OnChangeGameState);
         OnChangeGameState(_profilePlayer.CurrentState.Value);

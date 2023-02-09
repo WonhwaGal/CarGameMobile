@@ -3,11 +3,13 @@ using Game.InputLogic;
 using Game.TapeBackground;
 using Profile;
 using Tool;
+using Services.Analytics;
 
 namespace Game
 {
     internal class GameController : BaseController
     {
+        private AnalyticsManager _analyticsManager;
         public GameController(ProfilePlayer profilePlayer)
         {
             var leftMoveDiff = new SubscriptionProperty<float>();
@@ -21,6 +23,10 @@ namespace Game
 
             var carController = new CarController();
             AddController(carController);
+
+            //_analyticsManager = analyticsManager;
+            //_analyticsManager.SendGameStarted();
+            AnalyticsManager.Instance.SendGameStarted();
         }
     }
 }
