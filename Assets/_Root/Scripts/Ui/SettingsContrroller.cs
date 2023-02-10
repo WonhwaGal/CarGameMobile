@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 
 internal class SettingsContrroller : BaseController
 {
-    private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/settingsMenu");
+    private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/Ui/settingsMenu");
     private readonly ProfilePlayer _profilePlayer;
     private readonly SettingsView _view;
 

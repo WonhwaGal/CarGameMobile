@@ -7,7 +7,7 @@ namespace Ui
 {
     internal class MainMenuController : BaseController
     {
-        private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/MainMenu");
+        private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/Ui/mainMenu");
         private readonly ProfilePlayer _profilePlayer;
         private readonly MainMenuView _view;
 
@@ -15,7 +15,7 @@ namespace Ui
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, GoToSettings, WatchRewardedAd, BuyItem);
+            _view.Init(StartGame, GoToSettings, WatchRewardedAd, GoShed, BuyItem);
 
             SubscribeAds();
             SubscribeIAP();
@@ -37,12 +37,11 @@ namespace Ui
             return objectView.GetComponent<MainMenuView>();
         }
 
-        private void StartGame() =>
-            _profilePlayer.CurrentState.Value = GameState.Game;
-        private void GoToSettings() =>
-            _profilePlayer.CurrentState.Value = GameState.Settings;
+        private void StartGame() => _profilePlayer.CurrentState.Value = GameState.Game;
+        private void GoToSettings() => _profilePlayer.CurrentState.Value = GameState.Settings;
         private void WatchRewardedAd() => ServicesRoster.AdsService.RewardedPlayer.Play();
         private void BuyItem(string id) => ServicesRoster.IAPService.Buy(id);
+        private void GoShed() => _profilePlayer.CurrentState.Value = GameState.Shed;
 
 
         private void SubscribeAds()
