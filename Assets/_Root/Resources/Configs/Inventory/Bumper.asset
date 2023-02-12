@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44160c2051f34df2a96d862e4a59ce39, type: 3}
-  m_Name: Brake
+  m_Script: {fileID: 11500000, guid: 6118ce1540d041a4a9adc89d27299e04, type: 3}
+  m_Name: Bumper
   m_EditorClassIdentifier: 
-  _itemConfig: {fileID: 11400000, guid: b597b6b04f8d34d0bb36337f81f45ec0, type: 2}
-  <Type>k__BackingField: 1
-  <Value>k__BackingField: 3
+  <Id>k__BackingField: bumper
+  <Title>k__BackingField: Bumper
+  <Icon>k__BackingField: {fileID: 21300000, guid: 32b6d5ddcbb5929439500c44ea4f9019, type: 3}

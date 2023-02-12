@@ -8,7 +8,7 @@ namespace Services.Analytics.UnityAnalytics
         public void SendEvent(string eventName)
         {
             UnityEngine.Analytics.Analytics.CustomEvent(eventName);
-            Debug.Log($"Sending and event {eventName}");
+            //Debug.Log($"Sending an event: {eventName}");
         }
 
         public void SendEvent(string eventName, Dictionary<string, object> eventData) =>

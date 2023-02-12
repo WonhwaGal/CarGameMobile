@@ -794,7 +794,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4388579016437046734}
   - component: {fileID: 2152093854380180556}
-  - component: {fileID: 6316991792425797958}
   - component: {fileID: 1123799072181104470}
   - component: {fileID: 6079381451533037004}
   m_Layer: 5
@@ -833,30 +832,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4969944458756993584}
   m_CullTransparentMesh: 0
---- !u!114 &6316991792425797958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4969944458756993584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: CrystalPack-555
-  buttonType: 0
-  consumePurchase: 1
-  onPurchaseComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onPurchaseFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  priceText: {fileID: 0}
 --- !u!114 &1123799072181104470
 MonoBehaviour:
   m_ObjectHideFlags: 0

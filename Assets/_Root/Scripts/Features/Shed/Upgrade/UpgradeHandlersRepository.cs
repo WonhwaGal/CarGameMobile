@@ -20,6 +20,8 @@ namespace Features.Shed.Upgrade
             config.Type switch
             {
                 UpgradeType.Speed => new SpeedUpgradeHandler(config.Value),
+                UpgradeType.Jump => new JumpUpgradeHandler(config.Value),
+                UpgradeType.Shield => new ShieldUpgradeHandler(config.Value),
                 _ => StubUpgradeHandler.Default
             };
     }

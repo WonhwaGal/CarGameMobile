@@ -32,7 +32,5 @@ namespace Ui
             _buttonShed.onClick.RemoveAllListeners();
             _buttonBuy.onClick.RemoveAllListeners();
         }
-
-
     }
 }

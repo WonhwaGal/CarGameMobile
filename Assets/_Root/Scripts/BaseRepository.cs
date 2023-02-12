@@ -1,4 +1,5 @@
 using System;
+using Profile;
 using System.Collections.Generic;
 
 internal interface IRepository : IDisposable
@@ -11,9 +12,16 @@ internal abstract class BaseRepository<TKey, TValue, TConfig> : IRepository
     private readonly Dictionary<TKey, TValue> _items;
     public IReadOnlyDictionary<TKey, TValue> Items => _items;
 
+    public ProfilePlayer ProfilePlayer => _profilePlayer;
 
-    protected BaseRepository(IEnumerable<TConfig> configs) =>
+    private readonly ProfilePlayer _profilePlayer;
+
+    protected BaseRepository(IEnumerable<TConfig> configs, ProfilePlayer profilePlayer = null)
+    {
+        _profilePlayer = profilePlayer;
         _items = CreteItems(configs);
+    }
+
 
     public void Dispose() =>
         _items.Clear();

@@ -1,4 +1,5 @@
 using Tool;
+using Profile;
 using UnityEngine;
 using Features.AbilitySystem;
 
@@ -10,11 +11,12 @@ namespace Game.Car
         private readonly CarView _view;
 
         public GameObject ViewGameObject => _view.gameObject;
+        public Transform ViewCannon => _view.Cannon;
 
-
-        public CarController()
+        public CarController(ProfilePlayer profile, SubscriptionProperty<float> _rightMoveDiff)
         {
             _view = LoadView();
+            _view.Init(profile, _rightMoveDiff);
         }
 
 

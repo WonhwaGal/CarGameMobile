@@ -1,5 +1,6 @@
 using Tool;
 using System;
+using Profile;
 using UnityEngine;
 using JetBrains.Annotations;
 using Features.AbilitySystem.Abilities;
@@ -18,22 +19,25 @@ namespace Features.AbilitySystem
         private readonly AbilitiesRepository _repository;
         private readonly IAbilityActivator _abilityActivator;
 
+        private readonly ProfilePlayer _profilePlayer;
 
-        public AbilitiesController(
-            [NotNull] Transform placeForUi,
-            [NotNull] IAbilityActivator abilityActivator)
+        public AbilitiesController( [NotNull] Transform placeForUi, 
+                                    [NotNull] IAbilityActivator abilityActivator, 
+                                    [NotNull] ProfilePlayer profilePlayer)
         {
             if (placeForUi == null)
                 throw new ArgumentNullException(nameof(placeForUi));
 
-            _abilityActivator
-                = abilityActivator ?? throw new ArgumentNullException(nameof(abilityActivator));
+            _abilityActivator = abilityActivator ?? throw new ArgumentNullException(nameof(abilityActivator));
+            _profilePlayer = profilePlayer ?? throw new ArgumentNullException(nameof(profilePlayer));
 
             var abilityItemConfigs = LoadAbilityItemConfigs();
             _repository = CreateRepository(abilityItemConfigs);
             _view = LoadView(placeForUi);
 
             _view.Display(abilityItemConfigs, OnAbilityViewClicked);
+
+            
         }
 
 
@@ -42,7 +46,7 @@ namespace Features.AbilitySystem
 
         private AbilitiesRepository CreateRepository(AbilityItemConfig[] abilityItemConfigs)
         {
-            var repository = new AbilitiesRepository(abilityItemConfigs);
+            var repository = new AbilitiesRepository(abilityItemConfigs, _profilePlayer);
             AddRepository(repository);
 
             return repository;
