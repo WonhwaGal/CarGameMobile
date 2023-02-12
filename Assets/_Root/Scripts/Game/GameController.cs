@@ -24,9 +24,9 @@ namespace Game
             _leftMoveDiff = new SubscriptionProperty<float>();
             _rightMoveDiff = new SubscriptionProperty<float>();
 
-            _carController = CreateCarController(profilePlayer, _rightMoveDiff);
+            _carController = CreateCarController(profilePlayer.CurrentCar, _rightMoveDiff);
             _inputGameController = CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
-            _abilitiesController = CreateAbilitiesController(placeForUi, _carController, profilePlayer);
+            _abilitiesController = CreateAbilitiesController(placeForUi, _carController, profilePlayer.CurrentCar);
             _tapeBackgroundController = CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
 
             //ServicesRoster.AnalyticsManager.SendGameStarted();
@@ -50,17 +50,17 @@ namespace Game
             return inputGameController;
         }
 
-        private CarController CreateCarController(ProfilePlayer profilePlayer, SubscriptionProperty<float> _rightMoveDiff)
+        private CarController CreateCarController(CarModel model, SubscriptionProperty<float> _rightMoveDiff)
         {
-            var carController = new CarController(profilePlayer, _rightMoveDiff);
+            var carController = new CarController(model, _rightMoveDiff);
             AddController(carController);
 
             return carController;
         }
 
-        private AbilitiesController CreateAbilitiesController(Transform placeForUi, IAbilityActivator abilityActivator, ProfilePlayer profilePlayer)
+        private AbilitiesController CreateAbilitiesController(Transform placeForUi, IAbilityActivator abilityActivator, CarModel carModel)
         {
-            var abilitiesController = new AbilitiesController(placeForUi, abilityActivator, profilePlayer);
+            var abilitiesController = new AbilitiesController(placeForUi, abilityActivator, carModel);
             AddController(abilitiesController);
 
             return abilitiesController;

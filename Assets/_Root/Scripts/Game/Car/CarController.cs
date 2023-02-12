@@ -9,14 +9,15 @@ namespace Game.Car
     {
         private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Game/Car");
         private readonly CarView _view;
+        private readonly CarModel _model;
 
         public GameObject ViewGameObject => _view.gameObject;
         public Transform ViewCannon => _view.Cannon;
 
-        public CarController(ProfilePlayer profile, SubscriptionProperty<float> _rightMoveDiff)
+        public CarController(CarModel model, SubscriptionProperty<float> _rightMoveDiff)
         {
             _view = LoadView();
-            _view.Init(profile, _rightMoveDiff);
+            _view.Init(model, _rightMoveDiff);
         }
 
 

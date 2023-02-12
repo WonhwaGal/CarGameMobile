@@ -1,6 +1,7 @@
 using System;
 using Profile;
 using System.Collections.Generic;
+using Game.Car;
 
 internal interface IRepository : IDisposable
 {
@@ -12,13 +13,13 @@ internal abstract class BaseRepository<TKey, TValue, TConfig> : IRepository
     private readonly Dictionary<TKey, TValue> _items;
     public IReadOnlyDictionary<TKey, TValue> Items => _items;
 
-    public ProfilePlayer ProfilePlayer => _profilePlayer;
+    public CarModel CarModel => _model;
 
-    private readonly ProfilePlayer _profilePlayer;
+    private readonly CarModel _model;
 
-    protected BaseRepository(IEnumerable<TConfig> configs, ProfilePlayer profilePlayer = null)
+    protected BaseRepository(IEnumerable<TConfig> configs, CarModel model = null)
     {
-        _profilePlayer = profilePlayer;
+        _model = model;
         _items = CreteItems(configs);
     }
 

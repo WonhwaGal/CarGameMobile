@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Features.AbilitySystem.Abilities;
+using Game.Car;
 using Profile;
 
 namespace Features.AbilitySystem
@@ -11,9 +12,9 @@ namespace Features.AbilitySystem
 
     internal class AbilitiesRepository : BaseRepository<string, IAbility, AbilityItemConfig>
     {
-        public AbilitiesRepository(IEnumerable<AbilityItemConfig> configs, ProfilePlayer profilePlayer) : base(configs, profilePlayer)
+        public AbilitiesRepository(IEnumerable<AbilityItemConfig> configs, CarModel model) : base(configs, model)
         {
-            UnityEngine.Debug.Log("abilities repository => Current Jump ="+ProfilePlayer.CurrentCar.JumpHeight);
+            UnityEngine.Debug.Log("abilities repository => Current Jump ="+ model.JumpHeight);
         }
 
         protected override string GetKey(AbilityItemConfig config) => config.Id;
@@ -22,7 +23,7 @@ namespace Features.AbilitySystem
             config.Type switch
             {
                 AbilityType.Gun => new GunAbility(config),
-                AbilityType.Jump => new JumpAbility(config, ProfilePlayer),
+                AbilityType.Jump => new JumpAbility(config, CarModel),
                 _ => StubAbility.Default
             };
     }

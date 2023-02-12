@@ -4,6 +4,7 @@ using Profile;
 using UnityEngine;
 using JetBrains.Annotations;
 using Features.AbilitySystem.Abilities;
+using Game.Car;
 
 namespace Features.AbilitySystem
 {
@@ -19,17 +20,17 @@ namespace Features.AbilitySystem
         private readonly AbilitiesRepository _repository;
         private readonly IAbilityActivator _abilityActivator;
 
-        private readonly ProfilePlayer _profilePlayer;
+        private readonly CarModel _carModel;
 
         public AbilitiesController( [NotNull] Transform placeForUi, 
                                     [NotNull] IAbilityActivator abilityActivator, 
-                                    [NotNull] ProfilePlayer profilePlayer)
+                                    [NotNull] CarModel carModel)
         {
             if (placeForUi == null)
                 throw new ArgumentNullException(nameof(placeForUi));
 
             _abilityActivator = abilityActivator ?? throw new ArgumentNullException(nameof(abilityActivator));
-            _profilePlayer = profilePlayer ?? throw new ArgumentNullException(nameof(profilePlayer));
+            _carModel = carModel ?? throw new ArgumentNullException(nameof(carModel));
 
             var abilityItemConfigs = LoadAbilityItemConfigs();
             _repository = CreateRepository(abilityItemConfigs);
@@ -46,7 +47,7 @@ namespace Features.AbilitySystem
 
         private AbilitiesRepository CreateRepository(AbilityItemConfig[] abilityItemConfigs)
         {
-            var repository = new AbilitiesRepository(abilityItemConfigs, _profilePlayer);
+            var repository = new AbilitiesRepository(abilityItemConfigs, _carModel);
             AddRepository(repository);
 
             return repository;

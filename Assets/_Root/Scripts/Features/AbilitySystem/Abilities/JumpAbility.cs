@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using JetBrains.Annotations;
-using Profile;
+using Game.Car;
 
 namespace Features.AbilitySystem.Abilities
 {
@@ -9,19 +9,26 @@ namespace Features.AbilitySystem.Abilities
     {
         private readonly AbilityItemConfig _config;
         private float _jumpForce;
-
-        public JumpAbility([NotNull] AbilityItemConfig config, [NotNull] ProfilePlayer profilePlayer)
+        private const float _jumpTreshold = 0.05f;
+        public JumpAbility([NotNull] AbilityItemConfig config, [NotNull] CarModel model)
         {
             _config = config ?? throw new ArgumentNullException(nameof(config));
-            _jumpForce = profilePlayer.CurrentCar.JumpHeight;
+            _jumpForce = model.JumpHeight;
         }
 
 
         public void Apply(IAbilityActivator activator)
         {
             var projectile = activator.ViewGameObject.GetComponent<Rigidbody2D>();
-            Vector3 force = activator.ViewGameObject.transform.up * _jumpForce;    // _config.Value
-            projectile.AddForce(force, ForceMode2D.Impulse);
+            if (Mathf.Abs(projectile.velocity.y) < _jumpTreshold)
+            {
+                Vector3 force = activator.ViewGameObject.transform.up * _jumpForce;    // _config.Value
+                projectile.AddForce(force, ForceMode2D.Impulse);
+            }
+            else
+            {
+                Debug.Log("Cant jump, velocity up is " + projectile.velocity.y);
+            }
         }
     }
 }

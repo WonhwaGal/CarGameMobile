@@ -1,6 +1,5 @@
 using UnityEngine;
 using Tool;
-using Profile;
 
 namespace Game.Car
 {
@@ -12,13 +11,16 @@ namespace Game.Car
 
         private float _speed;
 
+        private SubscriptionProperty<float> _rightMoveDiff;
         public Transform Cannon { get => _cannon; set => _cannon = value; }
 
-        public void Init(ProfilePlayer profile, SubscriptionProperty<float> _rightMoveDiff)
+        public void Init(CarModel model, SubscriptionProperty<float> rightMoveDiff)
         {
-            _bumper.SetActive(profile.CurrentCar.Shield);
-            _speed = profile.CurrentCar.Speed * 3;
+            _bumper.SetActive(model.Shield);
+            _speed = model.Speed * 3;
+            _rightMoveDiff = rightMoveDiff;
             _rightMoveDiff.SubscribeOnChange(DriveToRight);
+            
         }
         private void DriveToRight(float rightDiff)
         {
@@ -27,6 +29,11 @@ namespace Game.Car
             {
                 tire.Rotate(0,0, -rightDiff * _speed);
             }
+        }
+
+        private void OnDestroy()
+        {
+            _rightMoveDiff.UnSubscribeOnChange(DriveToRight);
         }
     }
 }
