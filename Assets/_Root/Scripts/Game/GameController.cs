@@ -6,7 +6,6 @@ using Game.InputLogic;
 using Game.TapeBackground;
 using Features.AbilitySystem;
 
-
 namespace Game
 {
     internal class GameController : BaseController
@@ -19,6 +18,9 @@ namespace Game
         private readonly AbilitiesController _abilitiesController;
         private readonly TapeBackgroundController _tapeBackgroundController;
 
+        private readonly AbilitiesContext _abilitiesContext;
+
+
         public GameController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
             _leftMoveDiff = new SubscriptionProperty<float>();
@@ -26,7 +28,7 @@ namespace Game
 
             _carController = CreateCarController(profilePlayer.CurrentCar, _rightMoveDiff);
             _inputGameController = CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
-            _abilitiesController = CreateAbilitiesController(placeForUi, _carController, profilePlayer.CurrentCar);
+            _abilitiesContext = CreateAbilitiesContext(placeForUi, _carController, profilePlayer.CurrentCar);
             _tapeBackgroundController = CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
 
             //ServicesRoster.AnalyticsManager.SendGameStarted();
@@ -50,6 +52,13 @@ namespace Game
             return inputGameController;
         }
 
+        private AbilitiesContext CreateAbilitiesContext(Transform placeForUi, IAbilityActivator carController, CarModel carModel)
+        {
+            var _abilitiesContext = new AbilitiesContext(placeForUi, carController, carModel);
+            AddContext(_abilitiesContext);
+
+            return _abilitiesContext;
+        }
         private CarController CreateCarController(CarModel model, SubscriptionProperty<float> _rightMoveDiff)
         {
             var carController = new CarController(model, _rightMoveDiff);
@@ -58,12 +67,11 @@ namespace Game
             return carController;
         }
 
-        private AbilitiesController CreateAbilitiesController(Transform placeForUi, IAbilityActivator abilityActivator, CarModel carModel)
-        {
-            var abilitiesController = new AbilitiesController(placeForUi, abilityActivator, carModel);
-            AddController(abilitiesController);
+        //protected override void OnDispose()
+        //{
+        //    base.OnDispose();
 
-            return abilitiesController;
-        }
+        //    _abilitiesContext.Dispose();
+        //}
     }
 }

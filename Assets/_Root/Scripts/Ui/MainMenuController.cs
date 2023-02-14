@@ -10,6 +10,7 @@ namespace Ui
         private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/Ui/mainMenu");
         private readonly ProfilePlayer _profilePlayer;
         private readonly MainMenuView _view;
+        private readonly CustomLogger _logger;
 
         public MainMenuController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
@@ -19,6 +20,8 @@ namespace Ui
 
             SubscribeAds();
             SubscribeIAP();
+
+            _logger = LoggerFactory.Create<MainMenuController>();
         }
 
 
@@ -68,9 +71,9 @@ namespace Ui
             ServicesRoster.IAPService.PurchaseFailed.RemoveListener(OnIAPFailed);
         }
 
-        private void OnAdsFinished() => Debug.Log("Ads reward is granted");
-        private void OnAdsCancelled() => Debug.LogWarning("Process was interrupted. Reward is not granted.");
-        private void OnIAPSucceed() => Debug.Log("Purchase succeed");
-        private void OnIAPFailed() => Debug.LogWarning("Purchase failed");
+        private void OnAdsFinished() => _logger.Log("Ads reward is granted");
+        private void OnAdsCancelled() => _logger.Warning("Process was interrupted. Reward is not granted.");
+        private void OnIAPSucceed() => _logger.Log("Purchase succeed");
+        private void OnIAPFailed() => _logger.Warning("Purchase failed");
     }
 }
