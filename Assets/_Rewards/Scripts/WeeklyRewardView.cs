@@ -2,20 +2,17 @@ using UnityEngine;
 
 namespace Rewards
 {
-    public class InspectorReadOnlyAttribute : PropertyAttribute
-    {
-
-    }
-    internal sealed class DailyRewardView : RegularRewardView
+    internal sealed class WeeklyRewardView : RegularRewardView
     {
         [field: Header("Settings Time Get Reward")]
-        [SerializeField] private string _timespanName = "Day";
+
+        [SerializeField] private string _timespanName = "Week";
 
         [SerializeField]
-        [InspectorReadOnly] private float _cooldownTime = 86400;
+        [InspectorReadOnly] private float _cooldownTime = 604800;
 
         [SerializeField]
-        [InspectorReadOnly] private float _deadlineTime = 86400 * 2;
+        [InspectorReadOnly] private float _deadlineTime = 604800 * 2;
 
 
         private void Awake()
@@ -27,3 +24,4 @@ namespace Rewards
         }
     }
 }
+

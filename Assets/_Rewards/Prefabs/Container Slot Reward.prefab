@@ -94,7 +94,7 @@ MonoBehaviour:
   _originalBackground: {fileID: 7004583045184807626}
   _selectBackground: {fileID: 2272377541743267796}
   _iconCurrency: {fileID: 4086472198175623452}
-  _textDays: {fileID: 4302756515518959067}
+  _textSpans: {fileID: 4302756515518959067}
   _countReward: {fileID: 1385798521964531089}
 --- !u!1 &5230796541354458414
 GameObject:
