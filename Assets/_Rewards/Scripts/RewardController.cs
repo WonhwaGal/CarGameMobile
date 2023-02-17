@@ -32,7 +32,6 @@ namespace Rewards
             SubscribeButtons();
 
             _isInitialized = true;
-            Debug.Log($"dead line {_view.TimeDeadline}, cool {_view.TimeCooldown}");
         }
 
         public void Deinit()

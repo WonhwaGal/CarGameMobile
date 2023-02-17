@@ -6,10 +6,14 @@ using UnityEngine.UI;
 
 namespace Rewards
 {
+    public class InspectorReadOnlyAttribute : PropertyAttribute
+    {
+
+    }
     internal class RegularRewardView : MonoBehaviour
     {
-        private const string CurrentSlotInActiveKey = nameof(CurrentSlotInActiveKey);
-        private const string TimeGetRewardKey = nameof(TimeGetRewardKey);
+        public string CurrentSlotInActiveKey { get; protected set; }
+        public string TimeGetRewardKey { get; protected set; }
 
         public float TimeCooldown { get; protected set; }  // 86400 for  daily
         public float TimeDeadline { get; protected set; }  // 172800 for daily

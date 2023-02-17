@@ -2,13 +2,19 @@ using UnityEngine;
 
 namespace Rewards
 {
-    public class InspectorReadOnlyAttribute : PropertyAttribute
-    {
-
-    }
     internal sealed class DailyRewardView : RegularRewardView
     {
-        [field: Header("Settings Time Get Reward")]
+        [Header("PlayerPrefs Settings")]
+        [SerializeField]
+        [InspectorReadOnly]
+        private string _currentSlotInActiveKey = "DailyCurrentSlot";
+
+        [SerializeField]
+        [InspectorReadOnly]
+        private string _timeGetRewardKey = "DailyTimeGetReward";
+
+
+        [Header("Settings Time Get Reward")]
         [SerializeField] private string _timespanName = "Day";
 
         [SerializeField]
@@ -24,6 +30,9 @@ namespace Rewards
 
             TimeCooldown = _cooldownTime;
             TimeDeadline = _deadlineTime;
+
+            CurrentSlotInActiveKey = _currentSlotInActiveKey;
+            TimeGetRewardKey = _timeGetRewardKey;
         }
     }
 }

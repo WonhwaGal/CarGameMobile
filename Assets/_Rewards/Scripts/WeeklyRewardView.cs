@@ -4,7 +4,16 @@ namespace Rewards
 {
     internal sealed class WeeklyRewardView : RegularRewardView
     {
-        [field: Header("Settings Time Get Reward")]
+        [Header("PlayerPrefs Settings")]
+        [SerializeField]
+        [InspectorReadOnly]
+        private string _currentSlotInActiveKey = "WeeklyCurrentSlot";
+
+        [SerializeField]
+        [InspectorReadOnly]
+        private string _timeGetRewardKey = "WeeklyTimeGetReward";
+
+        [Header("Settings Time Get Reward")]
 
         [SerializeField] private string _timespanName = "Week";
 
@@ -21,6 +30,9 @@ namespace Rewards
 
             TimeCooldown = _cooldownTime;
             TimeDeadline = _deadlineTime;
+
+            CurrentSlotInActiveKey = _currentSlotInActiveKey;
+            TimeGetRewardKey = _timeGetRewardKey;
         }
     }
 }
