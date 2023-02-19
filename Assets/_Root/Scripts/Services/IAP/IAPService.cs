@@ -93,7 +93,6 @@ namespace Services.IAP
             if (IsInitialized)
             {
                 _controller.InitiatePurchase(id);
-                Debug.Log("Buy method");
             }
             else
                 Error($"Buy {id} FAIL. Not initialized.");

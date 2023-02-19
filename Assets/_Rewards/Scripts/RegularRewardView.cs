@@ -50,7 +50,6 @@ namespace Rewards
                     PlayerPrefs.DeleteKey(TimeGetRewardKey);
             }
         }
-
     }
 }
 
