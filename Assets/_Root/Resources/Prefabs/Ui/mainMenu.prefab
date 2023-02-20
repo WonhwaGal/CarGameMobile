@@ -916,6 +916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5660545872060543822}
   - component: {fileID: 6506296579413713210}
+  - component: {fileID: 4498836861403620582}
   m_Layer: 5
   m_Name: mainMenu
   m_TagString: Untagged
@@ -967,6 +968,31 @@ MonoBehaviour:
   _buttonBuy: {fileID: 6079381451533037004}
   _buttonShed: {fileID: 5631674435975948621}
   _buyItemId: CrystalPack-555
+--- !u!114 &4498836861403620582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6015533690559672758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103d7bdc9a5d4b247b6634cc0eea36b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttons:
+  - {fileID: 4606198224720175488}
+  - {fileID: 8200692205292694188}
+  - {fileID: 2499588950751208119}
+  _rectTransforms:
+  - {fileID: 3130634385701380256}
+  - {fileID: 6665675103781380877}
+  - {fileID: 3883920612371515850}
+  _duration: 2.5
+  _strength: 12
+  _loopCount: 10
+  _moveEase: 6
+  _horizontalShift: {x: 2, y: 0, z: 0}
 --- !u!1 &6674586104014651293
 GameObject:
   m_ObjectHideFlags: 0

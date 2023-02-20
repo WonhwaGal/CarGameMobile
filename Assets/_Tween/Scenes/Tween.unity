@@ -1157,6 +1157,7 @@ MonoBehaviour:
   _curveEase: 1
   _duration: 0.6
   _strength: 30
+  _buttonColor: {r: 0, g: 0.21298552, b: 1, a: 1}
 --- !u!1 &1288215147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,6 +1781,7 @@ MonoBehaviour:
   _curveEase: 1
   _duration: 0.6
   _strength: 30
+  _buttonColor: {r: 0.754717, g: 0.1666073, b: 0.1666073, a: 1}
 --- !u!1 &1628213505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,8 +1913,9 @@ MonoBehaviour:
   _rectTransform: {fileID: 1803062607}
   _animationButtonType: 1
   _curveEase: 1
-  _duration: 0.6
+  _duration: 60
   _strength: 30
+  _someColor: {r: 0.0625937, g: 1, b: 0, a: 1}
 --- !u!1 &1913927132
 GameObject:
   m_ObjectHideFlags: 0

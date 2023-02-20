@@ -27,7 +27,6 @@ internal abstract class ParentObject : IDisposable
     {
         if (_disposables == null)
             return;
-        Debug.Log($"disposables = {_disposables.Count}");
         foreach (IDisposable disposable in _disposables)
             disposable.Dispose();
 

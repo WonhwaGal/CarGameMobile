@@ -335,6 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4319002796030259351}
   - component: {fileID: 7945694458033473568}
+  - component: {fileID: -87911620340707325}
   - component: {fileID: 5358150485411422574}
   m_Layer: 5
   m_Name: ItemView
@@ -383,6 +384,26 @@ MonoBehaviour:
   _button: {fileID: 5358150485411422574}
   _selectedBackground: {fileID: 5205497687277547440}
   _unselectedBackground: {fileID: 1746341927020522133}
+--- !u!114 &-87911620340707325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668386525893257234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6284dfa4cf7687648899007f81785fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 5358150485411422574}
+  _rectTransform: {fileID: 6083696070020357356}
+  _children:
+  - {fileID: 8963562693025540382}
+  - {fileID: 2777883831363166299}
+  _duration: 1
+  _strength: 5
+  _moveEase: 9
 --- !u!114 &5358150485411422574
 MonoBehaviour:
   m_ObjectHideFlags: 0
