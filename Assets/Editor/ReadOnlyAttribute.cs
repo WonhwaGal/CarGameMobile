@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Rewards
+namespace Features.Rewards
 {
     [CustomPropertyDrawer(typeof(InspectorReadOnlyAttribute))]
     public class InspectorReadOnlyDrawer : PropertyDrawer
