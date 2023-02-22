@@ -14,10 +14,10 @@ namespace Game.Car
         public GameObject ViewGameObject => _view.gameObject;
         public Transform ViewCannon => _view.Cannon;
 
-        public CarController(CarModel model, SubscriptionProperty<float> _rightMoveDiff)
+        public CarController(CarModel model, SubscriptionProperty<float> _rightMoveDiff, SubscriptionProperty<float> _leftMoveDiff)
         {
             _view = LoadView();
-            _view.Init(model, _rightMoveDiff);
+            _view.Init(model, _rightMoveDiff, _leftMoveDiff);
         }
 
 

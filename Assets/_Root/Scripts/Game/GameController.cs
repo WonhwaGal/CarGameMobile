@@ -19,6 +19,7 @@ namespace Game
         private readonly TapeBackgroundController _tapeBackgroundController;
 
         private readonly AbilitiesContext _abilitiesContext;
+        private readonly GameUIController _gameUIController;
 
 
         public GameController(Transform placeForUi, ProfilePlayer profilePlayer)
@@ -26,11 +27,12 @@ namespace Game
             _leftMoveDiff = new SubscriptionProperty<float>();
             _rightMoveDiff = new SubscriptionProperty<float>();
 
-            _carController = CreateCarController(profilePlayer.CurrentCar, _rightMoveDiff);
+            _carController = CreateCarController(profilePlayer.CurrentCar, _rightMoveDiff, _leftMoveDiff);
             _inputGameController = CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
             _abilitiesContext = CreateAbilitiesContext(placeForUi, _carController, profilePlayer.CurrentCar);
             _tapeBackgroundController = CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
 
+            _gameUIController = CreateGameUIController(placeForUi, profilePlayer);
             //ServicesRoster.AnalyticsManager.SendGameStarted();
         }
 
@@ -59,19 +61,20 @@ namespace Game
 
             return _abilitiesContext;
         }
-        private CarController CreateCarController(CarModel model, SubscriptionProperty<float> _rightMoveDiff)
+        private CarController CreateCarController(CarModel model, SubscriptionProperty<float> _rightMoveDiff, SubscriptionProperty<float> _leftMoveDiff)
         {
-            var carController = new CarController(model, _rightMoveDiff);
+            var carController = new CarController(model, _rightMoveDiff, _leftMoveDiff);
             AddController(carController);
 
             return carController;
         }
 
-        //protected override void OnDispose()
-        //{
-        //    base.OnDispose();
+        private GameUIController CreateGameUIController(Transform placeForUi, ProfilePlayer profilePlayer)
+        {
+            var gameUIController = new GameUIController(placeForUi, profilePlayer);
+            AddController(gameUIController);
 
-        //    _abilitiesContext.Dispose();
-        //}
+            return gameUIController;
+        }
     }
 }

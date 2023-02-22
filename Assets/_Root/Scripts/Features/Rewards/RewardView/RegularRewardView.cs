@@ -1,4 +1,3 @@
-using Features.Rewards.Slot;
 using System;
 using System.Collections.Generic;
 using TMPro;

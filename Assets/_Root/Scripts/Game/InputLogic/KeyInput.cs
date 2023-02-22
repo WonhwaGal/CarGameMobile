@@ -10,6 +10,8 @@ namespace Game.InputLogic
 
         protected override void Move()
         {
+            if (IsPaused)
+                return;
             inputX = Input.GetAxis("Horizontal");
             float speed = Speed * _inputMultiplier * Time.deltaTime;
             if (inputX > 0)
