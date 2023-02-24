@@ -3,7 +3,6 @@ using System;
 using Profile;
 using UnityEngine;
 using System.Collections;
-using Features.Rewards.Slot;
 using Features.Rewards.Currency;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
@@ -84,6 +83,7 @@ namespace Features.Rewards
             for (int i = 0; i < _view.Rewards.Count; i++)
             {
                 ContainerSlotRewardView instanceSlot = CreateSlotRewardView();
+                instanceSlot.SpanName = _view.TimespanName;
                 _slots.Add(instanceSlot);
             }
         }
@@ -181,13 +181,13 @@ namespace Features.Rewards
                 DateTime.UtcNow - _view.TimeGetReward.Value;
 
             bool isDeadlineElapsed =
-                timeFromLastRewardGetting.Seconds >= _view.TimeDeadline;
+                timeFromLastRewardGetting.TotalSeconds >= _view.TimeDeadline;
 
             bool isTimeToGetNewReward =
-                timeFromLastRewardGetting.Seconds >= _view.TimeCooldown;
+                timeFromLastRewardGetting.TotalSeconds >= _view.TimeCooldown;
 
-            if (isDeadlineElapsed)
-                ResetRewardsState();
+
+            if (isDeadlineElapsed) ResetRewardsState();
 
             _isGetReward = isTimeToGetNewReward;
         }

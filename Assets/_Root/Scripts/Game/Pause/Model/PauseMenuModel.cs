@@ -1,18 +1,11 @@
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace Tool.Pause
+
+namespace Game
 {
-    internal class PauseController : MonoBehaviour, IPauseHandler
+    internal class PauseMenuModel : IPauseHandler
     {
-        public static PauseController Instance;
-
         private List<IPauseHandler> _pauseHandlers = new List<IPauseHandler>();
-
-        private void Awake()
-        {
-            Instance ??= this;
-        }
         public bool IsPaused { get; private set; }
 
         public void Register(IPauseHandler handler)
@@ -24,6 +17,7 @@ namespace Tool.Pause
         {
             _pauseHandlers.Remove(handler);
         }
+
 
         public void SetPaused(bool isPaused)
         {

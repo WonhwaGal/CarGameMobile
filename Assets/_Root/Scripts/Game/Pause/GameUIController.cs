@@ -1,5 +1,5 @@
-using Tool;
 using Profile;
+using Tool;
 using UnityEngine;
 
 namespace Game
@@ -7,18 +7,17 @@ namespace Game
     internal class GameUIController : BaseController
     {
         private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/Game/GameUIView");
-        private readonly ProfilePlayer _profilePlayer;
-        private readonly GameUIView _view;
+        private GameUIView _view;
+        private PauseMenuModel _pauseModel;
+
 
         public GameUIController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
-            _profilePlayer = profilePlayer;
+            _pauseModel = profilePlayer.PauseModel;
             _view = LoadView(placeForUi);
-            _view.Init();
 
-            Subscribe(_view);
+            _view.Init(OpenPauseMenu);
         }
-
         private GameUIView LoadView(Transform placeForUi)
         {
             GameObject prefab = ResourcesLoader.LoadPrefab(_resourcePath);
@@ -28,21 +27,10 @@ namespace Game
             return objectView.GetComponent<GameUIView>();
         }
 
-        protected override void OnDispose() => Unsubscribe(_view);
-
-        private void Subscribe(GameUIView view)
+        private void OpenPauseMenu()
         {
-            view.ExitButton.onClick.AddListener(ReturnToMenu);
-
-            view.BackToMenuButton.onClick.AddListener(ReturnToMenu);
+            _pauseModel.SetPaused(true);
         }
-
-        private void Unsubscribe(GameUIView view)
-        {
-            view.ExitButton.onClick.RemoveListener(ReturnToMenu);
-        }
-
-        private void ReturnToMenu() => _profilePlayer.CurrentState.Value = GameState.Start;
     }
 }
 

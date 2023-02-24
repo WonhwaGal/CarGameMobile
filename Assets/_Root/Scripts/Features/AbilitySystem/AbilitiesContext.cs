@@ -1,9 +1,10 @@
+using Tool;
+using System;
+using Profile;
+using Game.Car;
+using UnityEngine;
 using Features.AbilitySystem;
 using Features.AbilitySystem.Abilities;
-using Game.Car;
-using System;
-using Tool;
-using UnityEngine;
 
 
 namespace Game
@@ -12,24 +13,31 @@ namespace Game
     {
         private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Ability/AbilitiesView");
         private readonly ResourcePath _dataSourcePath = new ResourcePath("Configs/Ability/AbilityItemConfigDataSource");
-        CarModel _carModel;
+        private CarModel _carModel;
+        private PauseMenuModel _pauseMenuModel;
+        private ProfilePlayer _profilePlayer;
 
-        public AbilitiesContext(Transform placeForUi, IAbilityActivator abilityActivator, CarModel carModel)
+        public AbilitiesContext(Transform placeForUi, IAbilityActivator abilityActivator, ProfilePlayer profilePlayer)
         {
             if (placeForUi == null) throw new ArgumentNullException(nameof(placeForUi));
             if (abilityActivator == null) throw new ArgumentNullException(nameof(abilityActivator));
 
-            CreateController(placeForUi, abilityActivator, carModel);
+            _profilePlayer = profilePlayer ?? throw new ArgumentNullException(nameof(profilePlayer));
+
+            _pauseMenuModel = profilePlayer.PauseModel;
+
+            CreateController(placeForUi, abilityActivator, profilePlayer);
         }
 
-        private AbilitiesController CreateController(Transform placeForUi, IAbilityActivator abilityActivator, CarModel carModel)
+
+        private AbilitiesController CreateController(Transform placeForUi, IAbilityActivator abilityActivator, ProfilePlayer profilePlayer)
         {
-            _carModel = carModel;
+            _carModel = profilePlayer.CurrentCar;
             IAbilitiesView view = LoadView(placeForUi);
             AbilityItemConfig[] itemConfigs = LoadAbilityItemConfigs();
             IAbilitiesRepository repository = CreateRepository(itemConfigs);
 
-            var abilitiesController = new AbilitiesController(view, repository, itemConfigs, abilityActivator);
+            var abilitiesController = new AbilitiesController(view, repository, itemConfigs, abilityActivator, _pauseMenuModel);
             AddController(abilitiesController);
 
             return abilitiesController;

@@ -170,8 +170,17 @@ MonoBehaviour:
     <IconCurrency>k__BackingField: {fileID: 21300000, guid: e0eac6b76fdd842e88a7f8c75ecffaf4, type: 3}
     <CountCurrency>k__BackingField: 20
   - <RewardType>k__BackingField: 0
+    <IconCurrency>k__BackingField: {fileID: 21300000, guid: e0eac6b76fdd842e88a7f8c75ecffaf4, type: 3}
+    <CountCurrency>k__BackingField: 50
+  - <RewardType>k__BackingField: 1
     <IconCurrency>k__BackingField: {fileID: 21300000, guid: f59401c5c79564fd1ae3bfb0876455a7, type: 3}
     <CountCurrency>k__BackingField: 50
+  - <RewardType>k__BackingField: 0
+    <IconCurrency>k__BackingField: {fileID: 21300000, guid: e0eac6b76fdd842e88a7f8c75ecffaf4, type: 3}
+    <CountCurrency>k__BackingField: 100
+  - <RewardType>k__BackingField: 1
+    <IconCurrency>k__BackingField: {fileID: 21300000, guid: f59401c5c79564fd1ae3bfb0876455a7, type: 3}
+    <CountCurrency>k__BackingField: 70
   <TimerNewReward>k__BackingField: {fileID: 9125476085017039275}
   <MountRootSlotsReward>k__BackingField: {fileID: 9125476086005482797}
   <ContainerSlotRewardPrefab>k__BackingField: {fileID: 3679043120375174524, guid: a7d91559793971d4f8654644e121e9ba, type: 3}

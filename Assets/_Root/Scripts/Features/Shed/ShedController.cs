@@ -1,8 +1,8 @@
-using Profile;
 using System;
-using System.Collections.Generic;
+using Profile;
 using Features.Shed.Upgrade;
 using JetBrains.Annotations;
+using System.Collections.Generic;
 
 namespace Features.Shed
 {
@@ -13,9 +13,7 @@ namespace Features.Shed
     internal class ShedController : BaseController, IShedController
     {
         private readonly IShedView _view;
-        //private readonly BaseContext _inventoryContext;
         private readonly ProfilePlayer _profilePlayer;
-        //private readonly InventoryContext _inventoryContext;
         private readonly IUpgradeHandlersRepository _upgradeHandlersRepository;
 
         private readonly CustomLogger _logger;

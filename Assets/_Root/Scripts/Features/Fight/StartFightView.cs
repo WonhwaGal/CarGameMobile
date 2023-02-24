@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using Tool.Pause;
+using Game;
+using System;
 
 namespace Features.Fight
 {
@@ -9,10 +10,17 @@ namespace Features.Fight
     {
         [SerializeField] private Button _startFightButton;
 
+        private PauseMenuModel _pauseModel;
         private bool IsPaused;
-        public void Init(UnityAction startFight)
+
+
+        public void Init(UnityAction startFight, PauseMenuModel pauseModel)
         {
-            PauseController.Instance.Register(this);
+            _pauseModel
+                = pauseModel ?? throw new ArgumentNullException(nameof(pauseModel));
+            _pauseModel.Register(this);
+
+
             _startFightButton.onClick.AddListener( () =>
             {
                 if (IsPaused)
@@ -29,7 +37,7 @@ namespace Features.Fight
         private void OnDestroy()
         {
             _startFightButton.onClick.RemoveAllListeners();
-            PauseController.Instance.Register(this);
+            _pauseModel.UnRegister(this);
         }
     }
 }

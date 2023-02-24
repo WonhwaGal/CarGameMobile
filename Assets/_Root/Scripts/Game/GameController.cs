@@ -1,7 +1,7 @@
 using Tool;
 using Profile;
-using UnityEngine;
 using Game.Car;
+using UnityEngine;
 using Game.InputLogic;
 using Game.TapeBackground;
 using Features.AbilitySystem;
@@ -18,9 +18,10 @@ namespace Game
         private readonly AbilitiesController _abilitiesController;
         private readonly TapeBackgroundController _tapeBackgroundController;
 
-        private readonly AbilitiesContext _abilitiesContext;
         private readonly GameUIController _gameUIController;
+        private readonly PauseMenuController _pauseMenuController;
 
+        private readonly AbilitiesContext _abilitiesContext;
 
         public GameController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
@@ -28,11 +29,13 @@ namespace Game
             _rightMoveDiff = new SubscriptionProperty<float>();
 
             _carController = CreateCarController(profilePlayer.CurrentCar, _rightMoveDiff, _leftMoveDiff);
-            _inputGameController = CreateInputGameController(profilePlayer, _leftMoveDiff, _rightMoveDiff);
-            _abilitiesContext = CreateAbilitiesContext(placeForUi, _carController, profilePlayer.CurrentCar);
+            _inputGameController = CreateInputGameController(_leftMoveDiff, _rightMoveDiff, profilePlayer);
+            _abilitiesContext = CreateAbilitiesContext(placeForUi, _carController, profilePlayer);
             _tapeBackgroundController = CreateTapeBackground(_leftMoveDiff, _rightMoveDiff);
 
             _gameUIController = CreateGameUIController(placeForUi, profilePlayer);
+            _pauseMenuController = CreatePauseMenuController(placeForUi, profilePlayer);
+
             //ServicesRoster.AnalyticsManager.SendGameStarted();
         }
 
@@ -45,18 +48,18 @@ namespace Game
             return tapeBackgroundController;
         }
 
-        private InputGameController CreateInputGameController(ProfilePlayer profilePlayer,
-            SubscriptionProperty<float> leftMoveDiff, SubscriptionProperty<float> rightMoveDiff)
+        private InputGameController CreateInputGameController(SubscriptionProperty<float> leftMoveDiff, 
+            SubscriptionProperty<float> rightMoveDiff, ProfilePlayer profilePlayer)
         {
-            var inputGameController = new InputGameController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar);
+            var inputGameController = new InputGameController(leftMoveDiff, rightMoveDiff, profilePlayer);
             AddController(inputGameController);
 
             return inputGameController;
         }
 
-        private AbilitiesContext CreateAbilitiesContext(Transform placeForUi, IAbilityActivator carController, CarModel carModel)
+        private AbilitiesContext CreateAbilitiesContext(Transform placeForUi, IAbilityActivator carController, ProfilePlayer profilePlayer)
         {
-            var _abilitiesContext = new AbilitiesContext(placeForUi, carController, carModel);
+            var _abilitiesContext = new AbilitiesContext(placeForUi, carController, profilePlayer);
             AddContext(_abilitiesContext);
 
             return _abilitiesContext;
@@ -75,6 +78,14 @@ namespace Game
             AddController(gameUIController);
 
             return gameUIController;
+        }
+
+        private PauseMenuController CreatePauseMenuController(Transform placeForUi, ProfilePlayer profilePlayer)
+        {
+            var pauseMenuController = new PauseMenuController(placeForUi, profilePlayer);
+            AddController(pauseMenuController);
+
+            return pauseMenuController;
         }
     }
 }

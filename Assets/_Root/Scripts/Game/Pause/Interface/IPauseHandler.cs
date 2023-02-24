@@ -1,4 +1,4 @@
-namespace Tool.Pause
+namespace Game
 {
     public interface IPauseHandler
     {

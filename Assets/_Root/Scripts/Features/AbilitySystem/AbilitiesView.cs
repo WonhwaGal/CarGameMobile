@@ -1,13 +1,15 @@
+using Game;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
 using Features.AbilitySystem.Abilities;
 
+
 namespace Features.AbilitySystem
 {
     internal interface IAbilitiesView
     {
-        void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked);
+        void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked, PauseMenuModel pauseModel);
         void Clear();
     }
 
@@ -22,12 +24,12 @@ namespace Features.AbilitySystem
         private void OnDestroy() => Clear();
 
 
-        public void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked)
+        public void Display(IEnumerable<IAbilityItem> abilityItems, Action<string> clicked, PauseMenuModel pauseModel)
         {
             Clear();
 
             foreach (IAbilityItem abilityItem in abilityItems)
-                _buttonViews[abilityItem.Id] = CreateButtonView(abilityItem, clicked);
+                _buttonViews[abilityItem.Id] = CreateButtonView(abilityItem, clicked, pauseModel);
         }
 
         public void Clear()
@@ -39,7 +41,7 @@ namespace Features.AbilitySystem
         }
 
 
-        private AbilityButtonView CreateButtonView(IAbilityItem item, Action<string> clicked)
+        private AbilityButtonView CreateButtonView(IAbilityItem item, Action<string> clicked, PauseMenuModel pauseModel)
         {
             GameObject objectView = Instantiate(_abilityButtonPrefab, _placeForButtons, false);
             AbilityButtonView buttonView = objectView.GetComponent<AbilityButtonView>();
@@ -47,7 +49,8 @@ namespace Features.AbilitySystem
             buttonView.Init
             (
                 item.Icon,
-                () => clicked?.Invoke(item.Id)
+                () => clicked?.Invoke(item.Id),
+                pauseModel
             );
 
             return buttonView;

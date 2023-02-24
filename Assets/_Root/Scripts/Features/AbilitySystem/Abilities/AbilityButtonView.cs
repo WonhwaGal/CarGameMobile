@@ -1,7 +1,8 @@
-using Tool.Pause;
+using Game;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 namespace Features.AbilitySystem.Abilities
 {
@@ -16,15 +17,21 @@ namespace Features.AbilitySystem.Abilities
         [SerializeField] private Image _icon;
         [SerializeField] private Button _button;
 
+        private PauseMenuModel _pauseModel;
+
         private bool IsPaused;
 
         private void OnDestroy() => Deinit();
 
 
-        public void Init(Sprite icon, UnityAction click)
+        public void Init(Sprite icon, UnityAction click, PauseMenuModel pauseModel)
         {
             _icon.sprite = icon;
-            PauseController.Instance.Register(this);
+
+            _pauseModel
+                = pauseModel ?? throw new ArgumentNullException(nameof(pauseModel));
+            _pauseModel.Register(this);
+
             _button.onClick.AddListener(() =>
             {
                 if (IsPaused)
@@ -43,7 +50,7 @@ namespace Features.AbilitySystem.Abilities
         {
             _icon.sprite = null;
             _button.onClick.RemoveAllListeners();
-            PauseController.Instance.UnRegister(this);
+            _pauseModel.UnRegister(this);
         }
     }
 }

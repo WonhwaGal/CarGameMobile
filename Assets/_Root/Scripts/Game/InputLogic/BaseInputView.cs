@@ -1,7 +1,7 @@
 using JoostenProductions;
 using Tool;
 using UnityEngine;
-using Tool.Pause;
+
 
 namespace Game.InputLogic
 {
@@ -12,18 +12,19 @@ namespace Game.InputLogic
         private SubscriptionProperty<float> _leftMove;
         private SubscriptionProperty<float> _rightMove;
 
+        private PauseMenuModel _pauseModel;
         protected bool IsPaused;
 
         private void Start()
         {
             UpdateManager.SubscribeToUpdate(Move);
-            PauseController.Instance.Register(this);
+            _pauseModel.Register(this);
         }
 
         private void OnDestroy()
         {
             UpdateManager.UnsubscribeFromUpdate(Move);
-            PauseController.Instance.UnRegister(this);
+            _pauseModel.UnRegister(this);
         }
 
 
@@ -33,11 +34,13 @@ namespace Game.InputLogic
         public virtual void Init(
             SubscriptionProperty<float> leftMove,
             SubscriptionProperty<float> rightMove,
-            float speed)
+            float speed,
+            PauseMenuModel pauseModel)
         {
             _leftMove = leftMove;
             _rightMove = rightMove;
             Speed = speed;
+            _pauseModel = pauseModel;
         }
 
         protected void OnLeftMove(float value) =>

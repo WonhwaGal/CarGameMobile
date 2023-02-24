@@ -1,4 +1,5 @@
 using Game.Car;
+using Profile;
 using Tool;
 using UnityEngine;
 
@@ -13,10 +14,10 @@ namespace Game.InputLogic
         public InputGameController(
             SubscriptionProperty<float> leftMove,
             SubscriptionProperty<float> rightMove,
-            CarModel car)
+            ProfilePlayer profilePlayer)
         {
             _view = LoadView();
-            _view.Init(leftMove, rightMove, car.Speed);
+            _view.Init(leftMove, rightMove, profilePlayer.CurrentCar.Speed, profilePlayer.PauseModel);
         }
 
 

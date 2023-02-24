@@ -1,8 +1,9 @@
-using System;
-using System.Collections.Generic;
 using TMPro;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+
 
 namespace Features.Rewards
 {

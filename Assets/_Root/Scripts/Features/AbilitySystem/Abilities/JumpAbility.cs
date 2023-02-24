@@ -27,7 +27,7 @@ namespace Features.AbilitySystem.Abilities
             }
             else
             {
-                Debug.Log("Cant jump, velocity up is " + projectile.velocity.y);
+                Debug.Log("Can't jump, up velocity is " + projectile.velocity.y);
             }
         }
     }

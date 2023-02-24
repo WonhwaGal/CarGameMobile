@@ -25,9 +25,6 @@ namespace Features.Fight
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
 
-            if (_view == null) Debug.Log("fight view is null");
-            else Debug.Log("fight view is NOT null");
-
             _enemy = new Enemy("Enemy Flappy");
 
             _money = CreatePlayerData(DataType.Money);

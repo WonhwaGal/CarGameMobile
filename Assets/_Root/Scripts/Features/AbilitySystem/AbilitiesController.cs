@@ -2,6 +2,7 @@ using System;
 using JetBrains.Annotations;
 using Features.AbilitySystem.Abilities;
 using System.Collections.Generic;
+using Game;
 
 namespace Features.AbilitySystem
 {
@@ -17,7 +18,8 @@ namespace Features.AbilitySystem
         public AbilitiesController( [NotNull] IAbilitiesView view,
                                     [NotNull] IAbilitiesRepository repository,
                                     [NotNull] IEnumerable<IAbilityItem> itemConfigs,
-                                    [NotNull] IAbilityActivator abilityActivator)
+                                    [NotNull] IAbilityActivator abilityActivator,
+                                    [NotNull] PauseMenuModel pauseModel)
         {
             _view 
                 = view ?? throw new ArgumentNullException(nameof(view));
@@ -28,7 +30,7 @@ namespace Features.AbilitySystem
             _abilityActivator 
                 = abilityActivator ?? throw new ArgumentNullException(nameof(abilityActivator));
 
-            _view.Display(itemConfigs, OnAbilityViewClicked);
+            _view.Display(itemConfigs, OnAbilityViewClicked, pauseModel);
         }
 
 
