@@ -21,7 +21,7 @@ namespace Tool.Tween
         [SerializeField] private float _duration = 0.6f;
         [SerializeField] private float _strength = 30f;
 
-
+        
         protected override void Awake()
         {
             base.Awake();

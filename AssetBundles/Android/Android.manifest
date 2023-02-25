@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 1687944851
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: homework_bundle
+      Dependencies: {}
+    Info_1:
+      Name: dog_bundle
+      Dependencies: {}

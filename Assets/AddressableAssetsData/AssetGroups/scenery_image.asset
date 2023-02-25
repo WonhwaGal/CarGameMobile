@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: scenery_image
+  m_EditorClassIdentifier: 
+  m_GroupName: scenery_image
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 283891d6211fb4348bb66cb4deffee44
+  m_SerializeEntries:
+  - m_GUID: 491bdaa80c2ec5c4ca338b77a2782b93
+    m_Address: Assets/_Root/Sprites/scenery.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefab
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: de5f1db884430bc48bc8408e6f70d0b1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 02f6ec2ba93ec3b4d99a7cb63f58fa9b, type: 2}
+    - {fileID: 11400000, guid: c8e1308b4b8ca8644880c3b9ca733339, type: 2}
