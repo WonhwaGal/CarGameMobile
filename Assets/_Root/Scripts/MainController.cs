@@ -5,7 +5,7 @@ using UnityEngine;
 using Features.Shed;
 using Features.Fight;
 using Features.Rewards;
-
+using UnityEngine.Localization.Settings;
 
 internal class MainController : BaseController
 {

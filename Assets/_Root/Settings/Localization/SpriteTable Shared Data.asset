@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: SpriteTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: SpriteTable
+  m_TableCollectionNameGuidString: dac60f6b17fc43046852a371970cd0eb
+  m_Entries:
+  - m_Id: 2252626354176
+    m_Key: Buy_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14013521879040
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items:
+    - rid: 7791124033729724447
+    - rid: 7791124033729724469
+  m_KeyGenerator:
+    rid: 7791124033729724445
+  references:
+    version: 2
+    RefIds:
+    - rid: 7791124033729724445
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1677673663062
+    - rid: 7791124033729724447
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 2252626354176
+          m_TableCodes:
+          - cs
+          - en
+          - ru-RU
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    - rid: 7791124033729724469
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 14013521879040
+          m_TableCodes:
+          - ru-RU
+          - cs
+          - en
+        m_TypeString: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

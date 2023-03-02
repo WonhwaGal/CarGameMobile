@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: RuEnCz_cs
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: cs
+  m_SharedData: {fileID: 11400000, guid: b130653507cb2c14c89b306f0b776671, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 702868774912
+    m_Localized: "Zm\u011Bnit jazyk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13793559994368
+    m_Localized: "Za\u010D\xEDt hru"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24776550539264
+    m_Localized: "Ukon\u010Dit "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24752286490624
+    m_Localized: "Nastaven\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24726915145728
+    m_Localized: "D\xEDlna"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24663988002816
+    m_Localized: "Denn\u011B Odm\u011Bny"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27143664721920
+    m_Localized: "Zp\u011Bt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416725237391360
+    m_Localized: Ok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416865062903808
+    m_Localized: "Zp\u011Bt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419393947197440
+    m_Localized: "Pokra\u010Dovat"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419433755336704
+    m_Localized: "Hlavn\xED menu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420477826654208
+    m_Localized: "Zah\xE1jit boj"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

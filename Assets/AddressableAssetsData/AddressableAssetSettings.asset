@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 722a28a5affbc9440a27623d9abe4d1b
   m_CachedHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 04d76740831f29b44dc2e884a23aff89
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -32,11 +32,14 @@ MonoBehaviour:
   m_ShaderBundleNaming: 0
   m_ShaderBundleCustomNaming: 
   m_MonoScriptBundleNaming: 0
+  m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
+  m_ContentStateBuildPathProfileVariableName: 
+  m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: 
@@ -47,6 +50,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9acef00ab398e6740b23a9eddd74971e, type: 2}
   - {fileID: 11400000, guid: a84a1f75523ef274391fea25fed231c4, type: 2}
   - {fileID: 11400000, guid: 8e573480bfaf1c048a410d3f06565140, type: 2}
+  - {fileID: 11400000, guid: c0b3ffdbe26fc534a859e2df373ea0bc, type: 2}
+  - {fileID: 11400000, guid: 0b151df7f6c77d2438ee5fa19c205ba7, type: 2}
+  - {fileID: 11400000, guid: 995bbd1787fd0c04fb77b03159b13db9, type: 2}
+  - {fileID: 11400000, guid: 247ea1ff0fbde25419f40767a2dbf7a9, type: 2}
+  - {fileID: 11400000, guid: db7f8e478350a4648b2bb57601e3aac4, type: 2}
+  - {fileID: 11400000, guid: 89911bd912bde4d46befa25d5e2dd11e, type: 2}
+  - {fileID: 11400000, guid: 34f3992a662c9ce49b5e2364cf8b83d3, type: 2}
+  - {fileID: 11400000, guid: b255d89a700fe744bb80d81cdaaac91f, type: 2}
+  - {fileID: 11400000, guid: 27929d9dce568c94c960975dc8f2372a, type: 2}
+  - {fileID: 11400000, guid: fecca6cc1d417044a9df6c32afc580b5, type: 2}
+  - {fileID: 11400000, guid: 3a385ac465e2d0840887521f418cdaa0, type: 2}
+  - {fileID: 11400000, guid: 8040794576ff7cc49bd6801ff587dcc6, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -89,6 +104,11 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Prefab
+    - Locale
+    - Locale-en
+    - Locale-fr
+    - Locale-ru-RU
+    - Locale-cs
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 710dbef9f4086dc4d8486ed4fbb513b2, type: 2}

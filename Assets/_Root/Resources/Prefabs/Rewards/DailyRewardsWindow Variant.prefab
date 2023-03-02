@@ -192,6 +192,20 @@ MonoBehaviour:
   _timespanName: Day
   _cooldownTime: 86400
   _deadlineTime: 172800
+--- !u!114 &4134189731762871464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125476086601166459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c30e686a79749278d21dae69747112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settings: {fileID: 11400000, guid: e5f865c40586f3c4cb4c6b3f5e3445e0, type: 2}
+  _buttonNotification: {fileID: 9125476085834507178}
 --- !u!114 &9125476086700077910 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5134989089121392442, guid: e04108fa319174ed981357b4cc4d9383, type: 3}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db626ad063b13545924a9839ac5fa83, type: 3}
+  m_Name: SpriteTable
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: dac60f6b17fc43046852a371970cd0eb, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 397e31ff466c0d842b3fbfbde0612d52, type: 2}
+  - {fileID: 11400000, guid: 9acdc415b81add74893b1964f7b29a05, type: 2}
+  - {fileID: 11400000, guid: 471df5bf5f9f7a9419044f62cc74bb29, type: 2}
+  m_Extensions: []
+  m_Group: Asset Table
+  references:
+    version: 2
+    RefIds: []
